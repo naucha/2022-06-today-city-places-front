@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "./App.css";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
@@ -7,8 +7,6 @@ import { Icon } from "leaflet";
 import park from "./data/location-parks";
 
 function App() {
-  const [activePark, setActivePark] = useState<any>(null);
-
   const markerIcon = new Icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/6456/6456238.png",
     iconSize: [35, 35],
@@ -35,26 +33,21 @@ function App() {
               park.geometry.coordinates[1],
             ]}
             icon={markerIcon}
-            eventHandlers={{
-              click: () => {
-                setActivePark(park);
-              },
-            }}
-          />
-        ))}
-        {activePark && (
-          <Popup
-            position={[
-              activePark.geometry.coordinates[0],
-              activePark.geometry.coordinates[1],
-            ]}
           >
-            <div>
-              <h2>{activePark.properties.NAME}</h2>
-              <p>{activePark.properties.DESCRIPTIO}</p>
-            </div>
-          </Popup>
-        )}
+            {" "}
+            <Popup
+              position={[
+                park.geometry.coordinates[0],
+                park.geometry.coordinates[1],
+              ]}
+            >
+              <div>
+                <h2>{park.properties.NAME}</h2>
+                <p>{park.properties.DESCRIPTIO}</p>
+              </div>
+            </Popup>
+          </Marker>
+        ))}
       </MapContainer>
     </>
   );
