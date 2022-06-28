@@ -1,9 +1,15 @@
 import React from "react";
 
 import "./App.css";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import {
+  MapContainer,
+  Marker,
+  Popup,
+  TileLayer,
+  useMapEvents,
+} from "react-leaflet";
 
-import { Icon } from "leaflet";
+import L, { Icon } from "leaflet";
 import park from "./data/location-parks";
 
 function App() {
@@ -12,8 +18,18 @@ function App() {
     iconSize: [35, 35],
   });
 
+  function MyComponent() {
+    const map = useMapEvents({
+      click: (e) => {
+        const { lat, lng } = e.latlng;
+        L.marker([lat, lng], { icon: markerIcon }).addTo(map);
+      },
+    });
+    return null;
+  }
+
   return (
-    <>
+    <div className="main">
       <h1>ROAD TRIP</h1>
       <MapContainer
         center={[41.3879, 2.16992]}
@@ -48,8 +64,9 @@ function App() {
             </Popup>
           </Marker>
         ))}
+        <MyComponent />
       </MapContainer>
-    </>
+    </div>
   );
 }
 
