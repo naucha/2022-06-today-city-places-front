@@ -5,7 +5,7 @@ const park = {
       properties: {
         PARK_ID: 1,
         NAME: "Tibidabo Park",
-        DESCRIPTIO: "Park del TIbidabo Barcelona",
+        DESCRIPTIO: "Park del Tibidabo Barcelona",
       },
       geometry: {
         type: "Point",
