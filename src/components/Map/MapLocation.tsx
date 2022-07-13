@@ -29,9 +29,10 @@ const MapLocation = () => {
             location.geometry.coordinates[1],
           ]}
         >
-          <div>
+          <div className="info-popup">
             <h2>{location.properties.name}</h2>
             <p>{location.properties.description}</p>
+            <p>{location.properties.media}</p>
           </div>
         </Popup>
       </Marker>
