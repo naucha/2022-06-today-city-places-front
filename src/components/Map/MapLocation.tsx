@@ -6,7 +6,7 @@ const MapLocation = () => {
   const locationState = useAppSelector((state) => state.locations);
 
   const markerIcon = new Icon({
-    iconUrl: "https://cdn-icons-png.flaticon.com/512/6456/6456238.png",
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
     iconSize: [35, 35],
   });
 
@@ -29,9 +29,10 @@ const MapLocation = () => {
             location.geometry.coordinates[1],
           ]}
         >
-          <div>
+          <div className="info-popup">
             <h2>{location.properties.name}</h2>
             <p>{location.properties.description}</p>
+            <p>{location.properties.media}</p>
           </div>
         </Popup>
       </Marker>
