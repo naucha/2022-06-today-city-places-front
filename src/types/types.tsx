@@ -9,3 +9,11 @@ export interface LocationData {
     coordinates: number[];
   };
 }
+
+export interface UserRegisterData {
+  firstname: string;
+  lastname: string;
+  username: string;
+  password: string;
+  emailadress: string;
+}
