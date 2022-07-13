@@ -1,60 +1,37 @@
-import { Marker, Popup, TileLayer, useMapEvents } from "react-leaflet";
-import { useEffect, useState } from "react";
+import { Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
-import park from "../../data/location-parks";
+import { useAppSelector } from "../../redux/store/hooks";
 
 const MapLocation = () => {
-  const [locations, setLocation] = useState<Array<any>>([]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLocation(park.features);
-    }, 5000);
-  }, []);
+  const locationState = useAppSelector((state) => state.locations);
 
   const markerIcon = new Icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/6456/6456238.png",
     iconSize: [35, 35],
   });
 
-  useMapEvents({
-    click: (e) => {
-      const { lat, lng } = e.latlng;
-      const newLocation = {
-        type: "Feature",
-        properties: {
-          PARK_ID: 1,
-          NAME: "Tibidabo Park",
-          DESCRIPTIO: "Park del Tibidabo Barcelona",
-        },
-        geometry: {
-          type: "Point",
-          coordinates: [lat, lng],
-        },
-      };
-      setLocation([...locations, newLocation]);
-    },
-  });
-
   const printMarkers = () => {
-    if (locations.length < 1) return null;
+    if (locationState.length < 1) return null;
 
-    return locations.map((park) => (
+    return locationState.map((location) => (
       <Marker
-        key={park.properties.PARK_ID}
-        position={[park.geometry.coordinates[0], park.geometry.coordinates[1]]}
+        key={location.properties.name}
+        position={[
+          location.geometry.coordinates[0],
+          location.geometry.coordinates[1],
+        ]}
         icon={markerIcon}
       >
         {" "}
         <Popup
           position={[
-            park.geometry.coordinates[0],
-            park.geometry.coordinates[1],
+            location.geometry.coordinates[0],
+            location.geometry.coordinates[1],
           ]}
         >
           <div>
-            <h2>{park.properties.NAME}</h2>
-            <p>{park.properties.DESCRIPTIO}</p>
+            <h2>{location.properties.name}</h2>
+            <p>{location.properties.description}</p>
           </div>
         </Popup>
       </Marker>
