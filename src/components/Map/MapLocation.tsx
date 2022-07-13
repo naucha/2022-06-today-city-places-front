@@ -6,7 +6,7 @@ const MapLocation = () => {
   const locationState = useAppSelector((state) => state.locations);
 
   const markerIcon = new Icon({
-    iconUrl: "https://cdn-icons-png.flaticon.com/512/6456/6456238.png",
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
     iconSize: [35, 35],
   });
 
