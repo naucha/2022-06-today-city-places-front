@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
-import "./App.css";
+import "./index.css";
 import { MapContainer } from "react-leaflet";
-import MapLocation from "./components/Map/MapLocation";
+import MapLocation from "./components/Maplocation/MapLocation";
 import { useAppDispatch } from "./redux/store/hooks";
 import { loadLocationsThunk } from "./redux/thunks/locationsThunk";
 import UserForm from "./components/Form/FormRegister/FormRegister";
