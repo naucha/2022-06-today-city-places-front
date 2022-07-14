@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { UserRegisterData } from "../../../types/types";
 
 const FormRegister = (): JSX.Element => {
@@ -8,21 +9,53 @@ const FormRegister = (): JSX.Element => {
     password: "",
     emailadress: "",
   };
+
+  const [formData, setFormData] = useState<UserRegisterData>(blankFields);
+  const changeData = (event: { target: { id: string; value: string } }) => {
+    setFormData({ ...formData, [event.target.id]: event?.target.value });
+  };
+
   return (
     <>
       <h2>REGISTER NEW ACCOUNT</h2>
       <p></p>
-      <form noValidate autoComplete="off" onSubmit={() => {}}>
+      <form noValidate autoComplete="off" onSubmit={() => ({})}>
         <label htmlFor="firstname">First Name</label>
-        <input id="firstname" />
+        <input
+          id="firstname"
+          value={formData.firstname}
+          onChange={changeData}
+          placeholder={`First Name`}
+        />
         <label htmlFor="lastname">Last Name</label>
-        <input id="lastname" />
+        <input
+          id="lastname"
+          value={formData.lastname}
+          onChange={changeData}
+          placeholder={`Last Name`}
+        />
         <label htmlFor="username">Username</label>
-        <input id="username" />
+        <input
+          id="username"
+          value={formData.username}
+          onChange={changeData}
+          placeholder={`Username`}
+        />
         <label htmlFor="password">Password</label>
-        <input id="password" />
+        <input
+          id="password"
+          value={formData.password}
+          onChange={changeData}
+          placeholder={`Password`}
+        />
         <label htmlFor="emailadress">Email Adress</label>
-        <input id="emailadress" />
+        <input
+          id="emailadress"
+          value={formData.emailadress}
+          onChange={changeData}
+          placeholder={`Email Adress`}
+        />
+        <button type="submit">Send</button>
       </form>
     </>
   );
