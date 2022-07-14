@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-
+import { Navigate, Routes, Route } from "react-router-dom";
+import FormRegister from "./components/Form/FormRegister/FormRegister";
 import "./index.css";
-import { MapContainer } from "react-leaflet";
-import MapLocation from "./components/Maplocation/MapLocation";
+import { Home } from "./pages/Home/Home";
+import { Notfound404 } from "./pages/Notfound404/Notfound404";
 import { useAppDispatch } from "./redux/store/hooks";
 import { loadLocationsThunk } from "./redux/thunks/locationsThunk";
-import UserForm from "./components/Form/FormRegister/FormRegister";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -15,18 +15,12 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="main">
-      <UserForm />
-      <h1>Today City Places</h1>
-      <MapContainer
-        center={[41.3879, 2.16992]}
-        zoom={12}
-        scrollWheelZoom={false}
-        className="map"
-      >
-        <MapLocation />
-      </MapContainer>
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigate to={"/home"} />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/userArea" element={<FormRegister />} />
+      <Route path="/*" element={<Notfound404 />} />
+    </Routes>
   );
 }
 
