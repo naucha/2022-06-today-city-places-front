@@ -14,7 +14,7 @@ const FormRegister = (): JSX.Element => {
 
   const [formData, setFormData] = useState<UserRegisterData>(blankFields);
   const changeData = (event: { target: { id: string; value: string } }) => {
-    setFormData({ ...formData, [event.target.id]: event?.target.value });
+    setFormData({ ...formData, [event.target.id]: event.target.value });
   };
 
   const resetForm = () => {
