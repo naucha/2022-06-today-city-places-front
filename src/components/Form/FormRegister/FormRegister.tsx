@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useAppDispatch } from "../../../redux/store/hooks";
+import { registerThunk } from "../../../redux/thunks/userThunks";
 import { UserRegisterData } from "../../../types/types";
 
 const FormRegister = (): JSX.Element => {
@@ -15,11 +17,22 @@ const FormRegister = (): JSX.Element => {
     setFormData({ ...formData, [event.target.id]: event?.target.value });
   };
 
+  const resetForm = () => {
+    setFormData(blankFields);
+  };
+
+  const dispatch = useAppDispatch();
+  const submitData = async (event: React.SyntheticEvent) => {
+    event.preventDefault();
+    await dispatch(registerThunk(formData));
+    resetForm();
+  };
+
   return (
     <>
       <h2>REGISTER NEW ACCOUNT</h2>
       <p></p>
-      <form noValidate autoComplete="off" onSubmit={() => ({})}>
+      <form noValidate autoComplete="off" onSubmit={submitData}>
         <label htmlFor="firstname">First Name</label>
         <input
           id="firstname"
