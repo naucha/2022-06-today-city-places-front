@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Navigate, Routes, Route } from "react-router-dom";
-import FormRegister from "./components/Form/FormRegister/FormRegister";
 import "./index.css";
-import { Home } from "./pages/Home/Home";
+import { HomePage } from "./pages/Home/HomePage";
 import { Notfound404 } from "./pages/Notfound404/Notfound404";
+import { RegisterPage } from "./pages/Register/RegisterPage";
 import { useAppDispatch } from "./redux/store/hooks";
 import { loadLocationsThunk } from "./redux/thunks/locationsThunk";
 
@@ -17,8 +17,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Navigate to={"/home"} />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/userArea" element={<FormRegister />} />
+      <Route path="/home" element={<HomePage />} />
+      <Route path="/register" element={<RegisterPage />} />
       <Route path="/*" element={<Notfound404 />} />
     </Routes>
   );

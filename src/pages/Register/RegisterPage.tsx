@@ -1,5 +1,5 @@
 import FormRegister from "../../components/Form/FormRegister/FormRegister";
 
-export const UserArea = () => {
+export const RegisterPage = () => {
   return <FormRegister />;
 };
