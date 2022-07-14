@@ -1,7 +1,7 @@
 import { MapContainer } from "react-leaflet";
 import MapLocation from "../../components/Maplocation/MapLocation";
 
-export const Home = () => {
+export const HomePage = () => {
   return (
     <div className="main">
       <h1>Today City Places</h1>
