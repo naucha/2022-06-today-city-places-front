@@ -5,15 +5,24 @@ import { HomePage } from "./pages/Home/HomePage";
 import LoginPage from "./pages/Login/LoginPage";
 import { Notfound404 } from "./pages/Notfound404/Notfound404";
 import { RegisterPage } from "./pages/Register/RegisterPage";
-import { useAppDispatch } from "./redux/store/hooks";
+import { useAppDispatch, useAppSelector } from "./redux/store/hooks";
 import { loadLocationsThunk } from "./redux/thunks/locationsThunk";
+import { UserLoginData } from "./types/types";
+import jwtDecode from "jwt-decode";
+import { loginActionCreator } from "./redux/features/userSlice";
 
 function App() {
   const dispatch = useAppDispatch();
+  const userStateInfo = useAppSelector((state) => state.user.logged);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    dispatch(loadLocationsThunk());
-  }, [dispatch]);
+    if (token) {
+      dispatch(loadLocationsThunk());
+      const { emailadress, username }: UserLoginData = jwtDecode(token);
+      dispatch(loginActionCreator({ emailadress, username }));
+    }
+  }, [dispatch, userStateInfo, token]);
 
   return (
     <Routes>
