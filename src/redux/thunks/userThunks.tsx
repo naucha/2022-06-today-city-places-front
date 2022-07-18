@@ -2,6 +2,7 @@ import axios from "axios";
 import { UserLoginData, UserRegisterData } from "../../types/types";
 import { AppDispatch } from "../store/store";
 import jwtDecode from "jwt-decode";
+import { loginActionCreator } from "../features/userSlice";
 
 export const registerThunk =
   (formData: UserRegisterData) => async (dispatch: AppDispatch) => {
@@ -21,5 +22,6 @@ export const loginThunk =
 
       localStorage.setItem("token", token);
       const userInfo = jwtDecode(token);
+      dispatch(loginActionCreator(userInfo));
     } catch (error) {}
   };
