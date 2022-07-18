@@ -10,6 +10,8 @@ import { loadLocationsThunk } from "./redux/thunks/locationsThunk";
 import { UserLoginData } from "./types/types";
 import jwtDecode from "jwt-decode";
 import { loginActionCreator } from "./redux/features/userSlice";
+import GateKeeper from "./components/GateKeeper/GateKeeper";
+import AntiGateKeeper from "./components/AntiGateKeeper/AntiGateKeeper";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -26,10 +28,38 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Navigate to={"/home"} />} />
-      <Route path="/home" element={<HomePage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+      <Route
+        path="/"
+        element={
+          <GateKeeper>
+            <Navigate to={"/home"} />
+          </GateKeeper>
+        }
+      />
+      <Route
+        path="/home"
+        element={
+          <GateKeeper>
+            <HomePage />
+          </GateKeeper>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <AntiGateKeeper>
+            <LoginPage />
+          </AntiGateKeeper>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <AntiGateKeeper>
+            <RegisterPage />
+          </AntiGateKeeper>
+        }
+      />
       <Route path="/*" element={<Notfound404 />} />
     </Routes>
   );
