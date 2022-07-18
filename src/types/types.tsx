@@ -11,15 +11,15 @@ export interface LocationData {
 }
 
 export interface UserRegisterData {
-  firstname: string;
-  lastname: string;
-  username: string;
-  password: string;
-  emailadress: string;
+  firstname: string | null;
+  lastname: string | null;
+  username: string | null;
+  password: string | null;
+  emailadress: string | null;
 }
 
 export interface UserLoginData {
-  username: string;
-  password: string;
-  emailadress: string;
+  username: string | null;
+  password: string | null;
+  emailadress: string | null;
 }
