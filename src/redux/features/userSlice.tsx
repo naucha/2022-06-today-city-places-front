@@ -4,6 +4,7 @@ interface UserState {
   username: string;
   emailadress: string;
   password: string;
+  id: string;
   logged: boolean;
 }
 
@@ -11,6 +12,7 @@ const initialState = {
   username: "",
   emailadress: "",
   password: "",
+  id: "",
   logged: false,
 } as UserState;
 
