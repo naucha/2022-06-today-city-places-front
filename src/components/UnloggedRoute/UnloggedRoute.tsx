@@ -2,21 +2,24 @@ import { useEffect } from "react";
 import { useAppSelector } from "../../redux/store/hooks";
 import { useNavigate } from "react-router-dom";
 
-const GateKeeper = ({ children }: { children: JSX.Element }) => {
+const UnloggedRoute = ({ children }: { children: JSX.Element }) => {
   const { logged } = useAppSelector((state) => state.user);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!logged && !token) {
-      navigate("/login");
+    if (logged) {
+      navigate("/");
     }
-  }, [logged, navigate, token]);
+  }, [logged, navigate]);
 
-  if (logged) {
+  if (!logged && token != null) {
+    return <>"Loading"</>;
+  }
+  if (!logged && token == null) {
     return children;
   }
   return null;
 };
 
-export default GateKeeper;
+export default UnloggedRoute;

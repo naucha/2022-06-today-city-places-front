@@ -10,8 +10,8 @@ import { loadLocationsThunk } from "./redux/thunks/locationsThunk";
 import { UserLoginData } from "./types/types";
 import jwtDecode from "jwt-decode";
 import { loginActionCreator } from "./redux/features/userSlice";
-import GateKeeper from "./components/GateKeeper/GateKeeper";
-import AntiGateKeeper from "./components/AntiGateKeeper/AntiGateKeeper";
+import LoggedRoute from "./components/LoggedRoute/LoggedRoute";
+import UnloggedRoute from "./components/UnloggedRoute/UnloggedRoute";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -20,48 +20,50 @@ function App() {
 
   useEffect(() => {
     if (token) {
-      dispatch(loadLocationsThunk());
       const { emailadress, username }: UserLoginData = jwtDecode(token);
+      dispatch(loadLocationsThunk());
       dispatch(loginActionCreator({ emailadress, username }));
     }
   }, [dispatch, userStateInfo, token]);
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <GateKeeper>
-            <Navigate to={"/home"} />
-          </GateKeeper>
-        }
-      />
-      <Route
-        path="/home"
-        element={
-          <GateKeeper>
-            <HomePage />
-          </GateKeeper>
-        }
-      />
-      <Route
-        path="/login"
-        element={
-          <AntiGateKeeper>
-            <LoginPage />
-          </AntiGateKeeper>
-        }
-      />
-      <Route
-        path="/register"
-        element={
-          <AntiGateKeeper>
-            <RegisterPage />
-          </AntiGateKeeper>
-        }
-      />
-      <Route path="/*" element={<Notfound404 />} />
-    </Routes>
+    <div className="container">
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <LoggedRoute>
+              <Navigate to={"/home"} />
+            </LoggedRoute>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <LoggedRoute>
+              <HomePage />
+            </LoggedRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <UnloggedRoute>
+              <LoginPage />
+            </UnloggedRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <UnloggedRoute>
+              <RegisterPage />
+            </UnloggedRoute>
+          }
+        />
+        <Route path="/*" element={<Notfound404 />} />
+      </Routes>
+    </div>
   );
 }
 
