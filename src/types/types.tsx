@@ -8,6 +8,7 @@ export interface LocationData {
   geometry: {
     coordinates: number[];
   };
+  owner: string;
 }
 
 export interface UserRegisterData {
@@ -16,6 +17,7 @@ export interface UserRegisterData {
   username: string;
   password: string;
   emailadress: string;
+  myplaces: string[];
 }
 
 export interface UserLoginData {
