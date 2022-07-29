@@ -5,26 +5,25 @@ import { HomePage } from "./pages/Home/HomePage";
 import LoginPage from "./pages/Login/LoginPage";
 import { Notfound404 } from "./pages/Notfound404/Notfound404";
 import { RegisterPage } from "./pages/Register/RegisterPage";
-import { useAppDispatch, useAppSelector } from "./redux/store/hooks";
-import { loadLocationsThunk } from "./redux/thunks/locationsThunk";
+import { useAppDispatch } from "./redux/store/hooks";
 import { UserLoginData } from "./types/types";
 import jwtDecode from "jwt-decode";
-import { loginActionCreator } from "./redux/features/userSlice";
 import LoggedRoute from "./components/LoggedRoute/LoggedRoute";
 import UnloggedRoute from "./components/UnloggedRoute/UnloggedRoute";
+import { loginThunk } from "./redux/thunks/userThunks";
 
 function App() {
   const dispatch = useAppDispatch();
-  const userStateInfo = useAppSelector((state) => state.user.logged);
   const token = localStorage.getItem("token");
 
   useEffect(() => {
     if (token) {
-      const { emailadress, username }: UserLoginData = jwtDecode(token);
-      dispatch(loadLocationsThunk());
-      dispatch(loginActionCreator({ emailadress, username }));
+      const { emailadress, password, username }: UserLoginData =
+        jwtDecode(token);
+
+      dispatch(loginThunk({ emailadress, password, username }));
     }
-  }, [dispatch, userStateInfo, token]);
+  }, [dispatch, token]);
 
   return (
     <div className="container">
