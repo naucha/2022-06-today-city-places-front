@@ -12,6 +12,7 @@ import LoggedRoute from "./components/LoggedRoute/LoggedRoute";
 import UnloggedRoute from "./components/UnloggedRoute/UnloggedRoute";
 import { loginThunk } from "./redux/thunks/userThunks";
 import Header from "./components/Header/Header";
+import Welcome from "./components/Welcome/Welcome";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -33,9 +34,13 @@ function App() {
         <Route
           path="/"
           element={
-            <LoggedRoute>
-              <Navigate to={"/home"} />
-            </LoggedRoute>
+            token ? (
+              <LoggedRoute>
+                <Navigate to={"/home"} />
+              </LoggedRoute>
+            ) : (
+              <Welcome />
+            )
           }
         />
         <Route

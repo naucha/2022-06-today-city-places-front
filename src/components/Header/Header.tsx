@@ -27,10 +27,14 @@ const Header = (): JSX.Element => {
         <h1>TODAY CITY PLACES</h1>
         {token ? <Button onClick={logout}>Logout</Button> : ""}
       </div>
-      <nav className="top__nav">
-        <NavlinkStyled to={"/home"}>Home</NavlinkStyled>
-        <NavlinkStyled to={"/home"}>About</NavlinkStyled>
-      </nav>
+      {token ? (
+        <nav className="top__nav">
+          <NavlinkStyled to={"/home"}>Home</NavlinkStyled>
+          <NavlinkStyled to={"/home"}>About</NavlinkStyled>
+        </nav>
+      ) : (
+        ""
+      )}
     </HeaderStyled>
   );
 };
