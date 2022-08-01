@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../redux/store/hooks";
 import { addLocationThunk } from "../../../redux/thunks/locationsThunk";
 import { LocationData } from "../../../types/types";
-import { SaveButtonStyled } from "../../Button/SaveButtonStyled/SavePlaceStyled";
 import { FormStyled } from "../../../styles/FormStyled";
 import HeadingSection from "../../Headings/HeadingSection";
+import { SaveButtonStyled } from "../../Button/SaveButtonStyled/SavePlaceStyled";
 
 interface coordinatesData {
   coordinates: number[];

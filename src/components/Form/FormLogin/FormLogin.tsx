@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useAppDispatch } from "../../../redux/store/hooks";
 import { loginThunk } from "../../../redux/thunks/userThunks";
 import { UserLoginData } from "../../../types/types";
-import { SaveButtonStyled } from "../../Button/SaveButtonStyled/SavePlaceStyled";
 import { FormStyled } from "../../../styles/FormStyled";
 import { Link } from "react-router-dom";
 import HeadingSection from "../../Headings/HeadingSection";
+import { SaveButtonStyled } from "../../Button/SaveButtonStyled/SavePlaceStyled";
 
 const FormLogin = (): JSX.Element => {
   const blankFields: UserLoginData = {
