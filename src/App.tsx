@@ -11,6 +11,7 @@ import jwtDecode from "jwt-decode";
 import LoggedRoute from "./components/LoggedRoute/LoggedRoute";
 import UnloggedRoute from "./components/UnloggedRoute/UnloggedRoute";
 import { loginThunk } from "./redux/thunks/userThunks";
+import Header from "./components/Header/Header";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <div className="container">
+      <Header />
       <Routes>
         <Route
           path="/"
