@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../../redux/store/hooks";
 import { registerThunk } from "../../../redux/thunks/userThunks";
+import { FormStyled } from "../../../styles/FormStyled";
 import { UserRegisterData } from "../../../types/types";
+import { SaveButtonStyled } from "../../Button/SaveButtonStyled/SavePlaceStyled";
+import HeadingSection from "../../Headings/HeadingSection";
 
 const FormRegister = (): JSX.Element => {
   const blankFields: UserRegisterData = {
@@ -13,6 +17,7 @@ const FormRegister = (): JSX.Element => {
   };
 
   const [formData, setFormData] = useState<UserRegisterData>(blankFields);
+
   const changeData = (event: { target: { id: string; value: string } }) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
@@ -30,9 +35,8 @@ const FormRegister = (): JSX.Element => {
 
   return (
     <>
-      <h2>REGISTER NEW ACCOUNT</h2>
-      <p></p>
-      <form noValidate autoComplete="off" onSubmit={submitData}>
+      <FormStyled noValidate autoComplete="off" onSubmit={submitData}>
+        <HeadingSection className="heading__form" name="REGISTER" />
         <label htmlFor="firstname">First Name</label>
         <input
           id="firstname"
@@ -68,8 +72,13 @@ const FormRegister = (): JSX.Element => {
           onChange={changeData}
           placeholder={`Email Adress`}
         />
-        <button type="submit">Send</button>
-      </form>
+        <div className="actions__form">
+          <SaveButtonStyled type="submit">Send</SaveButtonStyled>
+          <Link to="/login">
+            <span>Login</span>
+          </Link>
+        </div>
+      </FormStyled>
     </>
   );
 };
