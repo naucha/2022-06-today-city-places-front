@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useAppDispatch } from "../../../redux/store/hooks";
 import { loginThunk } from "../../../redux/thunks/userThunks";
 import { UserLoginData } from "../../../types/types";
+import { SaveButtonStyled } from "../../Button/SaveButtonStyled/SavePlaceStyled";
+import { FormStyled } from "../../../styles/FormStyled";
+import { Link } from "react-router-dom";
+import HeadingSection from "../../Headings/HeadingSection";
 
 const FormLogin = (): JSX.Element => {
   const blankFields: UserLoginData = {
@@ -29,8 +33,8 @@ const FormLogin = (): JSX.Element => {
 
   return (
     <>
-      <h2>LOGIN USER</h2>
-      <form noValidate autoComplete="off" onSubmit={submitData}>
+      <FormStyled noValidate autoComplete="off" onSubmit={submitData}>
+        <HeadingSection className="heading__form" name="LOGIN" />
         <label htmlFor="username">Username</label>
         <input
           id="username"
@@ -52,8 +56,13 @@ const FormLogin = (): JSX.Element => {
           onChange={changeData}
           placeholder={`Password`}
         />
-        <button type="submit">Send</button>
-      </form>
+        <div className="actions__form">
+          <SaveButtonStyled type="submit">Send</SaveButtonStyled>
+          <Link to="/register">
+            <span>Sign Up</span>
+          </Link>
+        </div>
+      </FormStyled>
     </>
   );
 };
