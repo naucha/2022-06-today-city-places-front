@@ -11,20 +11,14 @@ export const HomePage = (): JSX.Element => {
   return (
     <>
       {formAdd ? <FormAdd coordinates={coordinates} /> : ""}
-      <div className="main">
-        <h1>Today City Places</h1>
-        <MapContainer
-          center={[41.3879, 2.16992]}
-          zoom={12}
-          scrollWheelZoom={false}
-          className="map"
-        >
-          <MapLocation
-            setCoordinates={setCoordinates}
-            setFormAdd={setFormAdd}
-          />
-        </MapContainer>
-      </div>
+      <MapContainer
+        center={[41.3879, 2.16992]}
+        zoom={12}
+        scrollWheelZoom={false}
+        className="map"
+      >
+        <MapLocation setCoordinates={setCoordinates} setFormAdd={setFormAdd} />
+      </MapContainer>
     </>
   );
 };
