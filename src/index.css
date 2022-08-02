@@ -1,7 +1,7 @@
 :root {
   --bg-primary: #0b4f6c;
   --bg-secondary: #b80c09;
-  --fc-primary: aliceblue;
+  --fc-primary: #fbfbff;
   --red: #01baef;
 }
 
@@ -32,7 +32,7 @@ body {
   align-items: center;
   width: 70%;
   height: 70vh;
-  border: 20px solid var(--red);
+  border: 20px solid var(--fc-primary);
   border-radius: 12px;
   top: 35vh;
   position: absolute;
