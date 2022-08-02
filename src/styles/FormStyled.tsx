@@ -10,7 +10,6 @@ export const FormStyled = styled.form`
   align-items: center;
   position: absolute;
   background-color: #dededed4;
-  background-color: #122637b9;
   top: 35vh;
   bottom: 10vh;
   z-index: 3;
@@ -30,7 +29,7 @@ export const FormStyled = styled.form`
     font-size: 1.2em;
     font-weight: 600;
     padding: 2px;
-    color: var(--fc-primary);
+    color: var(--fc-secondary);
   }
 
   .actions__form {
