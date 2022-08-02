@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const WelcomeStyled = styled.div`
   display: flex;
-  flex-direction: row;
   position: absolute;
   top: 40vh;
   width: 80%;
@@ -10,8 +9,7 @@ const WelcomeStyled = styled.div`
   .welcome__container {
     letter-spacing: 1px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     padding: 20px;
     border-radius: 6px;
     color: var(--fc-primary);
@@ -19,8 +17,9 @@ const WelcomeStyled = styled.div`
 
     div {
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-around;
     }
+
     a {
       text-decoration: none;
       color: var(--bg-primary);
