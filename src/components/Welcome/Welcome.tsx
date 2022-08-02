@@ -15,16 +15,16 @@ const Welcome = (): JSX.Element => {
           name of the place, a description, a link to the web page, and a
           keyword to indicate the type of place. <br />
           <br />
-          <div>
-            <Link to="/login">
-              <span className="welcome__redirect">Login</span>
-            </Link>
-            <br />
-            <Link to="/login">
-              <span className="welcome__redirect">Register</span>
-            </Link>
-          </div>
         </p>
+        <div>
+          <Link to="/login">
+            <span className="welcome__redirect">Login</span>
+          </Link>
+          <br />
+          <Link to="/login">
+            <span className="welcome__redirect">Register</span>
+          </Link>
+        </div>
       </div>
     </WelcomeStyled>
   );
