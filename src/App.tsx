@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Navigate, Routes, Route } from "react-router-dom";
+import { Navigate, Routes, Route, useNavigate } from "react-router-dom";
 import "./index.css";
 import { HomePage } from "./pages/Home/HomePage";
 import LoginPage from "./pages/Login/LoginPage";
@@ -17,6 +17,7 @@ import Welcome from "./components/Welcome/Welcome";
 function App() {
   const dispatch = useAppDispatch();
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (token) {
@@ -24,8 +25,9 @@ function App() {
         jwtDecode(token);
 
       dispatch(loginThunk({ emailadress, password, username }));
+      navigate("/home");
     }
-  }, [dispatch, token]);
+  }, [dispatch, navigate, token]);
 
   return (
     <div className="container">
