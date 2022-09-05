@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface Props {
   primary?: string;
+  bg?: string;
 }
 
 const ButtonStyled = styled.button<Props>`
@@ -10,12 +11,13 @@ const ButtonStyled = styled.button<Props>`
   width: 100%;
   height: 40px;
   letter-spacing: 0.2em;
-  border: 2px solid var(--red);
+  border: 2px solid var(--blue);
   border-radius: 12px 12px 12px 12px;
   padding: 5px 16px 5px 18px;
   cursor: pointer;
-  background-color: ${(props) => (props.primary ? "white" : "var(--red)")};
-  color: ${(props) => (props.primary ? "var(--red)" : "white")};
+  background-color: ${(props) =>
+    props.bg ? "var(--bg-secondary)" : "var(--blue)"};
+  color: ${(props) => (props.primary ? "#ff6850" : "#fff")};
 
   &:hover {
     background-color: var(--fc-primary);

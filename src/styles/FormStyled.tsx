@@ -19,7 +19,7 @@ export const FormStyled = styled.form`
     display: block;
     font-size: 14px;
     font-weight: 600;
-    color: var(--fc-secondary);
+    color: var(--fc-primary);
   }
 
   input {
@@ -56,5 +56,9 @@ export const FormStyled = styled.form`
       letter-spacing: 2px;
       color: var(--fc-primary);
     }
+  }
+  .modal-container {
+    display: flex;
+    flex-direction: row;
   }
 `;

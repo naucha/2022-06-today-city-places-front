@@ -8,6 +8,6 @@ export const NavlinkStyled = styled(NavLink)`
   color: var(--fc-primary);
 
   &:hover {
-    color: var(--red);
+    color: var(--blue);
   }
 `;
