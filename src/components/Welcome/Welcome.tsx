@@ -7,8 +7,7 @@ const Welcome = (): JSX.Element => {
       <div className="welcome__container">
         <p>
           Today City Places is a SPA made with React managing states with Redux
-          (of course due to the scope of the project this is not necessary) and
-          using Leaflet that serves to save places on the map.
+          and using Leaflet that serves to save places on the map.
           <br />
           <br />
           When adding a place you will only have to click on the map, put the
