@@ -6,6 +6,7 @@ import { FormStyled } from "../../../styles/FormStyled";
 import { UserRegisterData } from "../../../types/types";
 import ButtonStyled from "../../Button/ButtonStyled";
 import HeadingSection from "../../Headings/HeadingSection";
+import Modal from "../../Modal/Index";
 
 const FormRegister = (): JSX.Element => {
   const blankFields: UserRegisterData = {
@@ -26,10 +27,16 @@ const FormRegister = (): JSX.Element => {
     setFormData(blankFields);
   };
 
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClose = () => setShowModal(false);
+
   const dispatch = useAppDispatch();
+
   const submitData = async (event: React.SyntheticEvent) => {
     event.preventDefault();
     await dispatch(registerThunk(formData));
+    setShowModal(true);
     resetForm();
   };
 
@@ -72,11 +79,14 @@ const FormRegister = (): JSX.Element => {
           onChange={changeData}
           placeholder={`Email Adress`}
         />
-        <div className="actions__form">
+        <div>
           <ButtonStyled type="submit">Send</ButtonStyled>
           <Link to="/login">
             <span>Login</span>
           </Link>
+          {showModal && (
+            <Modal onClose={handleClose}>Upps! Upps! Something is wrong!</Modal>
+          )}
         </div>
       </FormStyled>
     </>
