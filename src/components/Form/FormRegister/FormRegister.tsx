@@ -43,7 +43,7 @@ const FormRegister = (): JSX.Element => {
   return (
     <>
       <FormStyled noValidate autoComplete="off" onSubmit={submitData}>
-        <HeadingSection className="heading__form" name="REGISTER" />
+        <HeadingSection name="Register" />
         <label htmlFor="firstname">First Name</label>
         <input
           id="firstname"
@@ -81,11 +81,11 @@ const FormRegister = (): JSX.Element => {
         />
         <div>
           <ButtonStyled type="submit">Send</ButtonStyled>
-          <Link to="/login">
+          <Link className="link" to="/login">
             <span>Login</span>
           </Link>
           {showModal && (
-            <Modal onClose={handleClose}>Upps! Upps! Something is wrong!</Modal>
+            <Modal onClose={handleClose}>Upps! Something is wrong!</Modal>
           )}
         </div>
       </FormStyled>

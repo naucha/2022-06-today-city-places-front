@@ -18,12 +18,6 @@ body {
   background-color: var(--bg-primary);
 }
 
-.heading__form {
-  position: absolute;
-  z-index: 4;
-  top: 35vh;
-}
-
 .container {
   display: flex;
   flex-direction: column;

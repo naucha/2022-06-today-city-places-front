@@ -11,7 +11,7 @@ export const FormStyled = styled.form`
   align-items: left;
   position: absolute;
 
-  top: 35vh;
+  top: 20vh;
   bottom: 10vh;
   z-index: 3;
 
