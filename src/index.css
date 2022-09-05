@@ -1,8 +1,11 @@
 :root {
   --bg-primary: #0b4f6c;
-  --bg-secondary: #b80c09;
+  --bg-secondary: #ff6850;
   --fc-primary: #fbfbff;
-  --red: #01baef;
+
+  --fc-secondary: #ff6850;
+
+  --blue: #01baef;
 }
 
 body {
