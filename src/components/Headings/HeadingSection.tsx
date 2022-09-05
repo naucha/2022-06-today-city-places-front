@@ -6,7 +6,7 @@ interface Props {
 }
 
 const HeadingSectionStyled = styled.h2<Props>`
-  color: var(--red);
+  color: var(--blue);
   font-size: 1.4em;
   letter-spacing: 2px;
   color: var(--fc-secondary);

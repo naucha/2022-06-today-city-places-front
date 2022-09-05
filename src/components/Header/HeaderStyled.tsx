@@ -12,7 +12,7 @@ const HeaderStyled = styled.header`
   cursor: pointer;
   position: absolute;
   z-index: 4;
-  color: var(--red);
+  color: var(--blue);
   background-color: var(--bg-primary);
 
   .top__nav {
