@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { logoutActionCreator } from "../../redux/features/userSlice";
 import { useAppDispatch } from "../../redux/store/hooks";
 import { NavlinkStyled } from "../../styles/NavlinkStyled";
-import Button from "../Button/ButtonStyled";
+import { LogButtonStyled } from "../Button/LogButtonStyled/LogButtonStyled";
 
 import HeaderStyled from "./HeaderStyled";
 
@@ -25,7 +25,11 @@ const Header = (): JSX.Element => {
     <HeaderStyled>
       <div>
         <h1>TODAY CITY PLACES</h1>
-        {token ? <Button onClick={logout}>Logout</Button> : ""}
+        {token ? (
+          <LogButtonStyled onClick={logout}>Logout</LogButtonStyled>
+        ) : (
+          ""
+        )}
       </div>
       {token ? (
         <nav className="top__nav">

@@ -5,7 +5,7 @@ import { UserLoginData } from "../../../types/types";
 import { FormStyled } from "../../../styles/FormStyled";
 import { Link } from "react-router-dom";
 import HeadingSection from "../../Headings/HeadingSection";
-import { SaveButtonStyled } from "../../Button/SaveButtonStyled/SavePlaceStyled";
+import ButtonStyled from "../../Button/ButtonStyled";
 
 const FormLogin = (): JSX.Element => {
   const blankFields: UserLoginData = {
@@ -56,9 +56,9 @@ const FormLogin = (): JSX.Element => {
           onChange={changeData}
           placeholder={`Password`}
         />
-        <div className="actions__form">
-          <SaveButtonStyled type="submit">Send</SaveButtonStyled>
-          <Link to="/register">
+        <div>
+          <ButtonStyled type="submit">Send</ButtonStyled>
+          <Link className="link" to="/register">
             <span>Sign Up</span>
           </Link>
         </div>
