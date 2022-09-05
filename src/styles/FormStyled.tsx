@@ -1,50 +1,60 @@
 import styled from "styled-components";
 
 export const FormStyled = styled.form`
-  width: 75vw;
+  max-width: 320px;
+  width: 100%;
   border-radius: 6px;
-  height: calc(100vh);
+  color: #fff;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  align-items: center;
+  align-items: left;
   position: absolute;
-  background-color: #dededed4;
+
   top: 35vh;
   bottom: 10vh;
   z-index: 3;
-  gap: 10px;
-
-  input {
-    width: 40vw;
-    height: 35px;
-    font-size: 0.6em;
-    padding-left: 10px;
-    border: 2px solid var(--bg-primary);
-    border-radius: 14px;
-  }
 
   label {
-    width: 40vw;
-    font-size: 1.2em;
+    display: block;
+    font-size: 14px;
     font-weight: 600;
-    padding: 2px;
     color: var(--fc-secondary);
   }
 
-  .actions__form {
-    width: 40vw;
-    display: flex;
-    margin: 0;
-    justify-content: space-evenly;
-    align-items: center;
+  input {
+    display: block;
+    width: 100%;
+    border: none;
+    margin-bottom: 16px;
+    margin-top: 4px;
+    padding: 0;
+    background-color: #fff;
+    line-height: 2;
+    font-size: 0.6em;
   }
 
-  a {
-    text-decoration: none;
-    font-size: 0.8em;
-    font-weight: 600;
-    letter-spacing: 2px;
-    color: var(--fc-primary);
+  div {
+    line-height: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .link {
+      display: flex;
+      justify-content: center;
+      width: 50%;
+      :hover {
+        text-decoration: underline 4px solid #ff6850;
+        font-weight: 800;
+      }
+    }
+    a {
+      text-decoration: none;
+      font-size: 0.8em;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--fc-primary);
+    }
   }
 `;
