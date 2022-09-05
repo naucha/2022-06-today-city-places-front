@@ -3,17 +3,18 @@ import styled from "styled-components";
 const WelcomeStyled = styled.div`
   display: flex;
   position: absolute;
-  top: 40vh;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  top: 30vh;
   width: 80%;
 
   .welcome__container {
-    letter-spacing: 1px;
+    text-justify: auto;
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    border-radius: 6px;
+    font-size: 1.4rem;
     color: var(--fc-primary);
-    background: linear-gradient(20deg, var(--red) 60%, var(--bg-primary) 100%);
 
     div {
       display: flex;
@@ -22,7 +23,7 @@ const WelcomeStyled = styled.div`
 
     a {
       text-decoration: none;
-      color: var(--bg-primary);
+      color: var(--bg-secondary);
       font-weight: bold;
       letter-spacing: 4px;
       font-size: 1em;
