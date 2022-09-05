@@ -40,7 +40,7 @@ const FormLogin = (): JSX.Element => {
   return (
     <>
       <FormStyled noValidate autoComplete="off" onSubmit={submitData}>
-        <HeadingSection className="heading__form" name="Login" />
+        <HeadingSection name="Login" />
         <label htmlFor="username">Username</label>
         <input
           id="username"
