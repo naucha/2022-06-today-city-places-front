@@ -4,7 +4,7 @@ import { addLocationThunk } from "../../../redux/thunks/locationsThunk";
 import { LocationData } from "../../../types/types";
 import { FormStyled } from "../../../styles/FormStyled";
 import HeadingSection from "../../Headings/HeadingSection";
-import { SaveButtonStyled } from "../../Button/SaveButtonStyled/SavePlaceStyled";
+import ButtonStyled from "../../Button/ButtonStyled";
 
 interface coordinatesData {
   coordinates: number[];
@@ -30,6 +30,8 @@ const FormAdd = ({ coordinates }: coordinatesData): JSX.Element => {
   const resetForm = () => {
     setFormData(blankFields);
   };
+
+  const closeForm = () => {};
 
   const submitData = async (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -82,9 +84,9 @@ const FormAdd = ({ coordinates }: coordinatesData): JSX.Element => {
         onChange={changeData}
         placeholder={"Type"}
       ></input>
-      <SaveButtonStyled type="submit">Save Place</SaveButtonStyled>
+      <ButtonStyled type="submit">Save Place</ButtonStyled>
       <div>
-        <span>X</span>
+        <span onClick={closeForm}>X</span>
       </div>
     </FormStyled>
   );

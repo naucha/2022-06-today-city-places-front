@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../../redux/store/hooks";
 import { registerThunk } from "../../../redux/thunks/userThunks";
 import { FormStyled } from "../../../styles/FormStyled";
 import { UserRegisterData } from "../../../types/types";
-import { SaveButtonStyled } from "../../Button/SaveButtonStyled/SavePlaceStyled";
+import ButtonStyled from "../../Button/ButtonStyled";
 import HeadingSection from "../../Headings/HeadingSection";
 
 const FormRegister = (): JSX.Element => {
@@ -73,7 +73,7 @@ const FormRegister = (): JSX.Element => {
           placeholder={`Email Adress`}
         />
         <div className="actions__form">
-          <SaveButtonStyled type="submit">Send</SaveButtonStyled>
+          <ButtonStyled type="submit">Send</ButtonStyled>
           <Link to="/login">
             <span>Login</span>
           </Link>
