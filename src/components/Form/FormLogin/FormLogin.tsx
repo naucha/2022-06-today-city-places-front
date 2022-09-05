@@ -6,6 +6,7 @@ import { FormStyled } from "../../../styles/FormStyled";
 import { Link } from "react-router-dom";
 import HeadingSection from "../../Headings/HeadingSection";
 import ButtonStyled from "../../Button/ButtonStyled";
+import Modal from "../../Modal/Index";
 
 const FormLogin = (): JSX.Element => {
   const blankFields: UserLoginData = {
@@ -23,18 +24,23 @@ const FormLogin = (): JSX.Element => {
     setFormData(blankFields);
   };
 
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClose = () => setShowModal(false);
+
   const dispatch = useAppDispatch();
 
   const submitData = async (event: React.SyntheticEvent) => {
     event.preventDefault();
     await dispatch(loginThunk(formData));
+    setShowModal(true);
     resetForm();
   };
 
   return (
     <>
       <FormStyled noValidate autoComplete="off" onSubmit={submitData}>
-        <HeadingSection className="heading__form" name="LOGIN" />
+        <HeadingSection className="heading__form" name="Login" />
         <label htmlFor="username">Username</label>
         <input
           id="username"
@@ -61,6 +67,9 @@ const FormLogin = (): JSX.Element => {
           <Link className="link" to="/register">
             <span>Sign Up</span>
           </Link>
+          {showModal && (
+            <Modal onClose={handleClose}>Upps! Something is wrong!</Modal>
+          )}
         </div>
       </FormStyled>
     </>
