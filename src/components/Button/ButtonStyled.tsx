@@ -7,6 +7,8 @@ interface Props {
 const ButtonStyled = styled.button<Props>`
   font-size: 0.6em;
   font-weight: 600;
+  width: 100%;
+  height: 40px;
   letter-spacing: 0.2em;
   border: 2px solid var(--red);
   border-radius: 12px 12px 12px 12px;
@@ -18,6 +20,8 @@ const ButtonStyled = styled.button<Props>`
   &:hover {
     background-color: var(--fc-primary);
     color: var(--bg-primary);
+    font-weight: 800;
+    text-decoration: underline 4px solid #ff6850;
   }
 `;
 
