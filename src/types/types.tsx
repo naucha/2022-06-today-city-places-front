@@ -44,3 +44,7 @@ export interface UserResponseData {
   emailadress: string;
   id: string;
 }
+
+export interface UiState {
+  loading: boolean;
+}
