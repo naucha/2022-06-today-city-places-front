@@ -10,7 +10,7 @@ const HeaderStyled = styled.header`
   letter-spacing: 0.2em;
   padding: 0.4em;
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   z-index: 4;
   color: var(--blue);
   background-color: var(--bg-primary);

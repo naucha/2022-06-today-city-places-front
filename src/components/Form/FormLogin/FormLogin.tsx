@@ -25,7 +25,6 @@ const FormLogin = (): JSX.Element => {
   };
 
   const [showError, setShowError] = useState(false);
-
   const handleClose = () => setShowError(false);
 
   const dispatch = useAppDispatch();
@@ -34,6 +33,7 @@ const FormLogin = (): JSX.Element => {
     event.preventDefault();
     await dispatch(loginThunk(formData));
     setShowError(true);
+
     resetForm();
   };
 
@@ -67,13 +67,13 @@ const FormLogin = (): JSX.Element => {
           <Link className="link" to="/register">
             <span>Sign Up</span>
           </Link>
-          {showError && (
-            <Modal onClose={handleClose} text={"Upps! Something is wrong!"}>
-              {""}
-            </Modal>
-          )}
         </div>
       </FormStyled>
+      {showError && (
+        <Modal onClose={handleClose} text={"Upps! Something is wrong!"}>
+          {""}
+        </Modal>
+      )}
     </>
   );
 };
