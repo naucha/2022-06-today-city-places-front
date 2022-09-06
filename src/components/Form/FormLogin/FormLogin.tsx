@@ -24,16 +24,16 @@ const FormLogin = (): JSX.Element => {
     setFormData(blankFields);
   };
 
-  const [showModal, setShowModal] = useState(false);
+  const [showError, setShowError] = useState(false);
 
-  const handleClose = () => setShowModal(false);
+  const handleClose = () => setShowError(false);
 
   const dispatch = useAppDispatch();
 
   const submitData = async (event: React.SyntheticEvent) => {
     event.preventDefault();
     await dispatch(loginThunk(formData));
-    setShowModal(true);
+    setShowError(true);
     resetForm();
   };
 
@@ -67,8 +67,10 @@ const FormLogin = (): JSX.Element => {
           <Link className="link" to="/register">
             <span>Sign Up</span>
           </Link>
-          {showModal && (
-            <Modal onClose={handleClose}>Upps! Something is wrong!</Modal>
+          {showError && (
+            <Modal onClose={handleClose} text={"Upps! Something is wrong!"}>
+              {""}
+            </Modal>
           )}
         </div>
       </FormStyled>

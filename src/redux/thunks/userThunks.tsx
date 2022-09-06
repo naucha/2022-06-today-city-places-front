@@ -9,7 +9,9 @@ export const registerThunk =
     try {
       const url: string = `${process.env.REACT_APP_API_URL}user/register`;
       await axios.post(url, formData);
-    } catch (error: any) {}
+    } catch (error: any) {
+      return null;
+    }
   };
 
 export const loginThunk =

@@ -4,17 +4,18 @@ import ButtonStyled from "../Button/ButtonStyled";
 const ModalStyled = styled.div`
   background-color: var(--bg-secondary);
   width: 60vw;
-  height: 75%;
+  height: 80%;
   color: inherit;
   font-size: 20px;
 
   display: flex;
   flex-direction: row;
+  border-radius: 4px;
   justify-content: center;
   align-items: center;
   align-content: space-around;
   position: absolute;
-  top: 15%;
+  top: 8vh;
 `;
 
 const ModalContent = styled.div`
