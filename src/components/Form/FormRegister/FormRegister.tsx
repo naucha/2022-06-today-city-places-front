@@ -90,13 +90,13 @@ const FormRegister = (): JSX.Element => {
           <Link className="link" to="/login">
             <span>Login</span>
           </Link>
-          {showError && (
-            <Modal onClose={handleClose} text={"Upps! Something is wrong!"}>
-              {""}
-            </Modal>
-          )}
         </div>
       </FormStyled>
+      {showError && (
+        <Modal onClose={handleClose} text={"Upps! Something is wrong!"}>
+          {""}
+        </Modal>
+      )}
     </>
   );
 };
