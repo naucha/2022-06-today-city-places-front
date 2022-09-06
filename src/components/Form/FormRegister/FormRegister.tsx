@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../redux/store/hooks";
 import { registerThunk } from "../../../redux/thunks/userThunks";
 import { FormStyled } from "../../../styles/FormStyled";
@@ -27,16 +27,22 @@ const FormRegister = (): JSX.Element => {
     setFormData(blankFields);
   };
 
-  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+  const [showError, setShowError] = useState(false);
 
-  const handleClose = () => setShowModal(false);
+  const handleClose = () => setShowError(false);
 
   const dispatch = useAppDispatch();
 
   const submitData = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    await dispatch(registerThunk(formData));
-    setShowModal(true);
+    const response = await dispatch(registerThunk(formData));
+    if (response === null) {
+      setShowError(true);
+    } else {
+      setShowError(false);
+      navigate("/login");
+    }
     resetForm();
   };
 
@@ -84,8 +90,10 @@ const FormRegister = (): JSX.Element => {
           <Link className="link" to="/login">
             <span>Login</span>
           </Link>
-          {showModal && (
-            <Modal onClose={handleClose}>Upps! Something is wrong!</Modal>
+          {showError && (
+            <Modal onClose={handleClose} text={"Upps! Something is wrong!"}>
+              {""}
+            </Modal>
           )}
         </div>
       </FormStyled>
