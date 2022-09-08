@@ -6,28 +6,24 @@ import LoginPage from "./pages/Login/LoginPage";
 import { Notfound404 } from "./pages/Notfound404/Notfound404";
 import { RegisterPage } from "./pages/Register/RegisterPage";
 import { useAppDispatch, useAppSelector } from "./redux/store/hooks";
-import { UserLoginData } from "./types/types";
-import jwtDecode from "jwt-decode";
 import LoggedRoute from "./components/LoggedRoute/LoggedRoute";
 import UnloggedRoute from "./components/UnloggedRoute/UnloggedRoute";
-import { loginThunk } from "./redux/thunks/userThunks";
 import Header from "./components/Header/Header";
 import Welcome from "./components/Welcome/Welcome";
 import Loader from "./components/Loader/Loader";
+import { loadLocationsThunk } from "./redux/thunks/locationsThunk";
 
 function App() {
   const dispatch = useAppDispatch();
-  const token = localStorage.getItem("token");
   const navigate = useNavigate();
+
+  const token = localStorage.getItem("token");
 
   const { loading } = useAppSelector((state) => state.ui);
 
   useEffect(() => {
     if (token) {
-      const { emailadress, password, username }: UserLoginData =
-        jwtDecode(token);
-
-      dispatch(loginThunk({ emailadress, password, username }));
+      dispatch(loadLocationsThunk());
       navigate("/home");
     }
   }, [dispatch, navigate, token]);
