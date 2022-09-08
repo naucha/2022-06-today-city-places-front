@@ -2,7 +2,7 @@ import axios from "axios";
 import { UserLoginData, UserRegisterData } from "../../types/types";
 import { AppDispatch } from "../store/store";
 import { loginActionCreator } from "../features/userSlice";
-import { loadLocationsThunk } from "./locationsThunk";
+
 import {
   setLoadingOffActionCreator,
   setLoadingOnActionCreator,
@@ -33,8 +33,8 @@ export const loginThunk =
       dispatch(setLoadingOffActionCreator());
       localStorage.setItem("token", token);
       dispatch(loginActionCreator(userData));
-      dispatch(loadLocationsThunk());
     } catch (error) {
       dispatch(setLoadingOffActionCreator());
     }
+    dispatch(setLoadingOffActionCreator());
   };
